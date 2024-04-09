@@ -10,6 +10,12 @@ const Meta = ({title, description, keywords}) => {
   )
 };
 
+Meta.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  keywords: PropTypes.string
+};
+
 Meta.defaultProps = {
     title: "Welcome to ProShop",
     description: "We sell the best products for cheap",
