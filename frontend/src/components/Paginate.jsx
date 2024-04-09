@@ -17,4 +17,9 @@ const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
   )
 }
 
+Paginate.propTypes = {
+    pages: PropTypes.number.isRequired,
+    page: PropTypes.number.isRequired
+  };
+
 export default Paginate
