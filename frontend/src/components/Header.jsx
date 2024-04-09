@@ -35,8 +35,7 @@ const Header = () => {
             <Container>
                 <LinkContainer to="/">
                     <Navbar.Brand>
-                        <img src={logo} alt="ProShop"/>
-                        ProShop
+                        <img src={logo} alt="ProShop"/>ProShop
                     </Navbar.Brand>
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -67,7 +66,7 @@ const Header = () => {
                             <LinkContainer to="/login">
                                 <Nav.Link><FaUser /> Sign In</Nav.Link>
                             </LinkContainer>) }
-                        { userInfo && userInfo.isAdmin && (
+                        { userInfo?.isAdmin && (
                             <NavDropdown title="Admin" id="adminmenu">
                                 <LinkContainer to="/admin/productlist">
                                     <NavDropdown.Item>Products</NavDropdown.Item>
