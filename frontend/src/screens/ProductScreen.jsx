@@ -8,7 +8,7 @@ import Rating from "../components/Rating";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Meta from "../components/Meta";
-import { useGetProductDetailsQuery, useCreateReviewMutation } from "../slices/productsApiSlice";
+import { useGetProductDetailsQuery, useCreateReviewMutation, useShareToTwitterQuery } from "../slices/productsApiSlice";
 import { addToCart } from "../slices/cartSlice";
 
 const ProductScreen = () => {
@@ -23,6 +23,8 @@ const ProductScreen = () => {
 
 
   const { data : product, isLoading, refetch, error } = useGetProductDetailsQuery(productId);
+
+  const { data: shareToTwitter } = useShareToTwitterQuery(productId);
 
   const [createReview, {isLoading: loadingProductReview}] = useCreateReviewMutation();
 

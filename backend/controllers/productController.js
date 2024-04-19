@@ -140,4 +140,8 @@ const getTopProducts = asyncHandler(async (req, res) => {
   res.status(200).json(products);
 });
 
-export { getProducts, getProductById, createProduct, updateProduct, deleteProduct, createProductReview, getTopProducts };
+const shareToTwitter = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.id);
+});
+
+export { getProducts, getProductById, createProduct, updateProduct, deleteProduct, createProductReview, getTopProducts, shareToTwitter };
