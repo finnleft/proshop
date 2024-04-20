@@ -6,26 +6,26 @@ const ContactScreen = () => {
     <FormContainer>
         <h1>Contact</h1>
         <Form>
-            <Form.Group controlId="name" className="my-3">
+            <Form.Group controlId="name" className="my-3"> //Allow user to enter name
                 <Form.Label>Name</Form.Label>
                 <Form.Control
                     type="text"
                     placeholder="Enter name"></Form.Control>
             </Form.Group>
-            <Form.Group controlId="email" className="my-3">
+            <Form.Group controlId="email" className="my-3"> //Allow user to enter email
                 <Form.Label>Email Address</Form.Label>
                 <Form.Control
                     type="email"
                     placeholder="Enter email"></Form.Control>
             </Form.Group>
-            <Form.Group controlId="message" className="my-3">
+            <Form.Group controlId="message" className="my-3"> //Allow user to enter messgae to company, sized larger than other fields
                 <Form.Label>Message</Form.Label>
                 <Form.Control
                     as="textarea"
                     placeholder="Enter message"
                     style={{ height: "100px" }}></Form.Control>
             </Form.Group>
-            <Button type="submit" variant="primary" className="my-3">
+            <Button type="submit" variant="primary" className="my-3"> //Button will send message, still needs to implemented. Currently has no functionality
                 Send
             </Button>
         </Form>
