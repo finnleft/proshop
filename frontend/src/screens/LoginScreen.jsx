@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import { useLoginMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
 import { toast } from "react-toastify";
+import { GoogleLogin } from "@react-oauth/google";
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -69,6 +70,15 @@ const LoginScreen = () => {
 
             { isLoading && <Loader /> }
         </Form>
+
+        <GoogleLogin
+            onSuccess={(credentialResponse) => {
+                console.log(credentialResponse);
+            }}
+            onError={() => {
+                console.log("Login Failed")
+            }}
+            />
 
         <Row className="py-3">
             <Col>
