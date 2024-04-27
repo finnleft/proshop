@@ -33,14 +33,9 @@ const Rating = ({ value, text }) => {
                 <FaRegStar />
             }
         </span>
-        <span className="rating-text">{ text && text }</span>
+        <span className="rating-text">{ text }</span>
     </div>
   )
 }
-
-Rating.propTypes = {
-    value: PropTypes.number.isRequired,
-    text: PropTypes.string.isRequired,
-};
 
 export default Rating
