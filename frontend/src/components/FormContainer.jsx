@@ -13,8 +13,5 @@ const FormContainer = ({ children }) => {
   )
 }
 
-FormContainer.PropTypes = {
-  children: PropTypes.string.isRequired
-}
 
 export default FormContainer

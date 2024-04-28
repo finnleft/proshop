@@ -87,14 +87,6 @@ const RegisterScreen = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}></Form.Control>
             </Form.Group>
 
-            <GoogleLogin
-            onSuccess={(credentialResponse) => {
-                console.log(credentialResponse);
-            }}
-            onError={() => {
-                console.log("Login Failed")
-            }}
-            />
 
             <Button type="submit" variant="primary" className="mt-2" disabled={ isLoading }>
                 Sign Up
