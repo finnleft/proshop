@@ -24,7 +24,7 @@ const Product = ({ product }) => {
   )
 }
 
-Product.PropTypes ={
+Product.propTypes = {
     product: PropTypes.string.isRequired,
     _id: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
