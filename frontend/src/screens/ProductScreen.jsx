@@ -25,6 +25,8 @@ const ProductScreen = () => {
 
   const { data : product, isLoading, refetch, error } = useGetProductDetailsQuery(productId);
 
+  // shareLinks will be a JSON object that contains all three social sharing links
+  // (Twitter/X, Linkedin, Facebook) to plug into the buttons
   const { data: shareLinks, isLoading: loadingLinks } = useShareToSocialsQuery(productId);
 
   const [createReview, {isLoading: loadingProductReview}] = useCreateReviewMutation();
@@ -86,6 +88,7 @@ const ProductScreen = () => {
                         </ListGroup.Item>
                         <ListGroup.Item>
                              { loadingLinks ? <Loader /> : (
+                                /* three sharing buttons for socials. each gets an <a> tag referencing the provided link from the query */
                              <Row>
                                  <Col>
                                      <a href={shareLinks.twitter} className="twitter-share-button" target="_blank" data-show-count="false"><FaTwitterSquare size="40"/></a>

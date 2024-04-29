@@ -154,6 +154,7 @@ const shareToSocials = asyncHandler(async (req, res) => {
   // Build a Facebook intent link (suffers from the same limitation)
   let facebook = `https://www.facebook.com/sharer/sharer.php?u=https://proshop-plv7.onrender.com/product/${product._id}`;
 
+  // send links as a JSON object so the screen can access each one
   const links = {
     twitter: twitter,
     linkedin: linkedin,
