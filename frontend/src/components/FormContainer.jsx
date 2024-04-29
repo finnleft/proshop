@@ -1,5 +1,5 @@
-import { Container, Row, Col } from "react-bootstrap"
-import PropTypes from 'prop-types'
+import { Container, Row, Col } from "react-bootstrap";
+import PropTypes from 'prop-types';
 
 const FormContainer = ({ children }) => {
   return (
