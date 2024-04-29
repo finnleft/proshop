@@ -10,6 +10,7 @@ import Message from "../components/Message";
 import Meta from "../components/Meta";
 import { useGetProductDetailsQuery, useCreateReviewMutation, useShareToSocialsQuery } from "../slices/productsApiSlice";
 import { addToCart } from "../slices/cartSlice";
+import { FaTwitterSquare, FaLinkedin, FaFacebookSquare } from "react-icons/fa";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -87,13 +88,14 @@ const ProductScreen = () => {
                             { loadingLinks ? <Loader /> : (
                             <Row>
                                 <Col>
-                                    <a href={shareLinks.twitter} class="twitter-share-button" data-size="large" target="_blank" data-show-count="false">Post to X</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                    <a href={shareLinks.twitter} className="twitter-share-button" target="_blank" data-show-count="false"><FaTwitterSquare size="40"/></a>
+                                    <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
                                 </Col>
                                 <Col>
-                                    Post to Instagram
+                                    <a href={shareLinks.linkedin} target="_blank"><FaLinkedin size="40"/></a>
                                 </Col>
                                 <Col>
-                                    Post to Facebook
+                                    <a href={shareLinks.facebook} target="_blank"><FaFacebookSquare size="40"/></a>
                                 </Col>
                             </Row>
                             ) }

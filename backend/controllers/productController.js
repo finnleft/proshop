@@ -146,20 +146,14 @@ const shareToSocials = asyncHandler(async (req, res) => {
 
   // Build a Twitter/X intent link and fill the product link and name
   let twitter = "https://twitter.com/intent/tweet?short_url_length=8";
-  console.log(process.env.NODE_ENV);
-  if (process.env.NODE_ENV === "development") {
-    twitter += "&url=http://localhost:3000";
-  } else {
-    twitter += "&url=https://proshop-plv7.onrender.com";
-  }
-
-  twitter += "/product/" + product._id;
-
+  twitter += `&url=https://proshop-plv7.onrender.com/product/${product._id}`;
   twitter += "&via=ProShop&text=Check this out: " + product.name;
 
-  let linkedin = "https://linkedin.com/";
+  // Build a LinkedIn intent link (unfortunately, the LinkedIn API doesn't allow pre-filling post body text)
+  let linkedin = `https://linkedin.com/sharing/share-offsite/?url=https://proshop-plv7.onrender.com/product/${product._id}`;
 
-  let facebook = "https://facebook.com/";
+  // Build a Facebook intent link (suffers from the same limitation)
+  let facebook = `https://www.facebook.com/sharer/sharer.php?u=https://proshop-plv7.onrender.com/product/${product._id}`;
 
   const links = {
     twitter: twitter,
