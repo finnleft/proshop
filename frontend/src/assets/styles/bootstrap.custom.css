@@ -12110,3 +12110,12 @@ fieldset:disabled .btn {
     display: none !important;
   }
 }
+
+.fbButton{
+  width: 225px;
+  height: 45px;
+  padding: 7px 10px;
+  border-radius: 2px;
+  color: #ffffff;
+  background-color: #1877F2;
+}

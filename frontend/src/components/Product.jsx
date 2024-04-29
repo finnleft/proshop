@@ -24,14 +24,5 @@ const Product = ({ product }) => {
   )
 }
 
-Product.propTypes = {
-    product: PropTypes.string.isRequired,
-    _id: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    numReviews: PropTypes.number.isRequired,
-    rating: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired
-}
 
 export default Product
