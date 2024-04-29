@@ -1,5 +1,6 @@
 import asyncHandler from "../middleware/asyncHandler.js";
 import Product from "../models/productModel.js";
+import dotenv from "dotenv";
 
 // @desc    Fetch all products
 // @route   GET /api/products
@@ -140,8 +141,33 @@ const getTopProducts = asyncHandler(async (req, res) => {
   res.status(200).json(products);
 });
 
-const shareToTwitter = asyncHandler(async (req, res) => {
+const shareToSocials = asyncHandler(async (req, res) => {
   const product = await Product.findById(req.params.id);
+
+  // Build a Twitter/X intent link and fill the product link and name
+  let twitter = "https://twitter.com/intent/tweet?short_url_length=8";
+  console.log(process.env.NODE_ENV);
+  if (process.env.NODE_ENV === "development") {
+    twitter += "&url=http://localhost:3000";
+  } else {
+    twitter += "&url=https://proshop-plv7.onrender.com";
+  }
+
+  twitter += "/product/" + product._id;
+
+  twitter += "&via=ProShop&text=Check this out: " + product.name;
+
+  let linkedin = "https://linkedin.com/";
+
+  let facebook = "https://facebook.com/";
+
+  const links = {
+    twitter: twitter,
+    linkedin: linkedin,
+    facebook: facebook
+  };
+
+  res.json(links);
 });
 
-export { getProducts, getProductById, createProduct, updateProduct, deleteProduct, createProductReview, getTopProducts, shareToTwitter };
+export { getProducts, getProductById, createProduct, updateProduct, deleteProduct, createProductReview, getTopProducts, shareToSocials };

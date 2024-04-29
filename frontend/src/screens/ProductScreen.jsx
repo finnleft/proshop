@@ -8,7 +8,7 @@ import Rating from "../components/Rating";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Meta from "../components/Meta";
-import { useGetProductDetailsQuery, useCreateReviewMutation, useShareToTwitterQuery } from "../slices/productsApiSlice";
+import { useGetProductDetailsQuery, useCreateReviewMutation, useShareToSocialsQuery } from "../slices/productsApiSlice";
 import { addToCart } from "../slices/cartSlice";
 
 const ProductScreen = () => {
@@ -24,7 +24,7 @@ const ProductScreen = () => {
 
   const { data : product, isLoading, refetch, error } = useGetProductDetailsQuery(productId);
 
-  const { data: shareToTwitter } = useShareToTwitterQuery(productId);
+  const { data: shareLinks, isLoading: loadingLinks } = useShareToSocialsQuery(productId);
 
   const [createReview, {isLoading: loadingProductReview}] = useCreateReviewMutation();
 
@@ -82,6 +82,21 @@ const ProductScreen = () => {
                         </ListGroup.Item>
                         <ListGroup.Item>
                             {product.description}
+                        </ListGroup.Item>
+                        <ListGroup.Item>
+                            { loadingLinks ? <Loader /> : (
+                            <Row>
+                                <Col>
+                                    <a href={shareLinks.twitter} class="twitter-share-button" data-size="large" target="_blank" data-show-count="false">Post to X</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                </Col>
+                                <Col>
+                                    Post to Instagram
+                                </Col>
+                                <Col>
+                                    Post to Facebook
+                                </Col>
+                            </Row>
+                            ) }
                         </ListGroup.Item>
                     </ListGroup>
                     

@@ -63,7 +63,7 @@ export const productsApiSlice = apiSlice.injectEndpoints({
             }),
             keepUnusedDataFor: 5,
         }),
-        shareToTwitter: builder.query({
+        shareToSocials: builder.query({
             query: (id) => ({
                 url: `${PRODUCTS_URL}/${id}/share`
             }),
@@ -72,4 +72,4 @@ export const productsApiSlice = apiSlice.injectEndpoints({
     }),
 });
 
-export const { useGetProductsQuery, useGetProductDetailsQuery, useCreateProductMutation, useUpdateProductMutation, useUploadProductImageMutation, useDeleteProductMutation, useCreateReviewMutation, useGetTopProductsQuery, useShareToTwitterQuery } = productsApiSlice;
+export const { useGetProductsQuery, useGetProductDetailsQuery, useCreateProductMutation, useUpdateProductMutation, useUploadProductImageMutation, useDeleteProductMutation, useCreateReviewMutation, useGetTopProductsQuery, useShareToSocialsQuery } = productsApiSlice;
