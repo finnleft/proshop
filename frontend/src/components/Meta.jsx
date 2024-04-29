@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import PropTypes from 'prop-types';
 
 const Meta = ({title, description, keywords}) => {
   return (
@@ -8,6 +9,12 @@ const Meta = ({title, description, keywords}) => {
         <meta name="keywords" content={keywords} />
     </Helmet>
   )
+};
+
+Meta.propTypes = {
+  title: PropTypes.string,
+  description: PropTypes.string,
+  keywords: PropTypes.string
 };
 
 Meta.defaultProps = {
