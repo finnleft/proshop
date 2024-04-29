@@ -62,14 +62,8 @@ export const productsApiSlice = apiSlice.injectEndpoints({
                 url: `${PRODUCTS_URL}/top`,
             }),
             keepUnusedDataFor: 5,
-        }),
-        shareToSocials: builder.query({
-            query: (id) => ({
-                url: `${PRODUCTS_URL}/${id}/share`
-            }),
-            keepUnusedDataFor: 5,
         })
     }),
 });
 
-export const { useGetProductsQuery, useGetProductDetailsQuery, useCreateProductMutation, useUpdateProductMutation, useUploadProductImageMutation, useDeleteProductMutation, useCreateReviewMutation, useGetTopProductsQuery, useShareToSocialsQuery } = productsApiSlice;
+export const { useGetProductsQuery, useGetProductDetailsQuery, useCreateProductMutation, useUpdateProductMutation, useUploadProductImageMutation, useDeleteProductMutation, useCreateReviewMutation, useGetTopProductsQuery } = productsApiSlice;
