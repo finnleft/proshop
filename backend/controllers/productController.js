@@ -140,4 +140,27 @@ const getTopProducts = asyncHandler(async (req, res) => {
   res.status(200).json(products);
 });
 
-export { getProducts, getProductById, createProduct, updateProduct, deleteProduct, createProductReview, getTopProducts };
+const shareToSocials = asyncHandler(async (req, res) => {
+  const product = await Product.findById(req.params.id);
+
+  // Build a Twitter/X intent link and fill the product link and name
+  let twitter = "https://twitter.com/intent/tweet?short_url_length=8";
+  twitter += `&url=https://proshop-plv7.onrender.com/product/${product._id}`;
+  twitter += "&via=ProShop&text=Check this out: " + product.name;
+
+  // Build a LinkedIn intent link (unfortunately, the LinkedIn API doesn't allow pre-filling post body text)
+  let linkedin = `https://linkedin.com/sharing/share-offsite/?url=https://proshop-plv7.onrender.com/product/${product._id}`;
+
+  // Build a Facebook intent link (suffers from the same limitation)
+  let facebook = `https://www.facebook.com/sharer/sharer.php?u=https://proshop-plv7.onrender.com/product/${product._id}`;
+
+  const links = {
+    twitter: twitter,
+    linkedin: linkedin,
+    facebook: facebook
+  };
+
+  res.json(links);
+});
+
+export { getProducts, getProductById, createProduct, updateProduct, deleteProduct, createProductReview, getTopProducts, shareToSocials };
