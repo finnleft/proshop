@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import {Row, Col, Form, Button} from "react-bootstrap"
 import FormContainer from "../components/FormContainer";
 import emailjs from '@emailjs/browser';
@@ -6,6 +6,10 @@ import emailjs from '@emailjs/browser';
 const ContactScreen = () => {
 
     const form = useRef();
+
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -34,7 +38,9 @@ const ContactScreen = () => {
                 <Form.Control
                     type="text"
                     placeholder="Enter name"
-                    name="user_name">
+                    name="user_name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}>
                 </Form.Control>
             </Form.Group>
             <Form.Group controlId="email" className="my-3">
@@ -42,7 +48,9 @@ const ContactScreen = () => {
                 <Form.Control
                     type="email"
                     placeholder="Enter email"
-                    name="user_email">
+                    name="user_email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}>
                     </Form.Control>
             </Form.Group>
             <Form.Group controlId="message" className="my-3"> 
@@ -51,10 +59,12 @@ const ContactScreen = () => {
                     as="textarea"
                     placeholder="Enter message"
                     name="message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
                     style={{ height: "100px" }}>
                     </Form.Control>
             </Form.Group>
-            <Button type="submit" variant="primary" className="my-3">
+            <Button type="submit" variant="primary" className="my-3" disabled={!name || !email || !message}>
                 Send
             </Button>
         </Form>
