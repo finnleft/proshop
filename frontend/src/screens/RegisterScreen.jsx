@@ -8,6 +8,7 @@ import { useRegisterMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
 import { toast } from "react-toastify";
 import { jwtDecode } from "jwt-decode";
+import Facebook from '../assets/facebook.png';
 
 const RegisterScreen = () => {
   const [name, setName] = useState("");
@@ -117,12 +118,13 @@ const RegisterScreen = () => {
 
             <br/>
             <br/>
-            
-
             <div id="gSignIn"></div>
 
             <br/>
-            <br/>
+            <Button href="https://www.facebook.com/login/" className="fbButton">
+                <img src={Facebook} alt="" classname="icon"/>
+                Continue with Facebook
+            </Button>
 
             { isLoading && <Loader /> }
         </Form>

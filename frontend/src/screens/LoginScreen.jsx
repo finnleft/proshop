@@ -8,6 +8,7 @@ import { useLoginMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
 import { toast } from "react-toastify";
 import { jwtDecode } from "jwt-decode";
+import Facebook from '../assets/facebook.png';
 
 const LoginScreen = () => {
   const [email, setEmail] = useState("");
@@ -94,9 +95,13 @@ const LoginScreen = () => {
 
             <br/>
             <br/>
-            
-
             <div id="gSignIn"></div>
+
+            <br/>
+            <Button href="https://www.facebook.com/login/" className="fbButton">
+                <img src={Facebook} alt="" classname="icon"/>
+                Continue with Facebook
+            </Button>
 
 
             { isLoading && <Loader /> }
