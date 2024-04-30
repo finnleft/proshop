@@ -7,6 +7,8 @@ import Loader from "../components/Loader";
 import { useRegisterMutation } from "../slices/usersApiSlice";
 import { setCredentials } from "../slices/authSlice";
 import { toast } from "react-toastify";
+import { jwtDecode } from "jwt-decode";
+import Facebook from '../assets/facebook.png';
 
 const RegisterScreen = () => {
   const [name, setName] = useState("");
@@ -25,7 +27,30 @@ const RegisterScreen = () => {
   const sp = new URLSearchParams(search);
   const redirect = sp.get("redirect") || "/";
 
+  function handleCallbackResponse(response) {
+    console.log("Encoded JWT ID token" + response.credential)
+    var userObject = jwtDecode(response.credential);
+    console.log(userObject);
+
+    setName(userObject.name);
+    setEmail(userObject.email);
+    setPassword("google123");
+    setConfirmPassword("google123");
+  }
+
   useEffect(() => {
+
+      /* global google */
+  google.accounts.id.initialize({
+    client_id: "1089007710098-p3tbv4ds0pnvdn8jotfs9pun062badl6.apps.googleusercontent.com",
+    callback: handleCallbackResponse
+  });
+
+  google.accounts.id.renderButton(
+    document.getElementById("gSignIn"),
+    { theme: "outline", size: "large "}
+  );
+
     if (userInfo) {
         navigate(redirect);
     }
@@ -86,8 +111,19 @@ const RegisterScreen = () => {
                     onChange={(e) => setConfirmPassword(e.target.value)}></Form.Control>
             </Form.Group>
 
+
             <Button type="submit" variant="primary" className="mt-2" disabled={ isLoading }>
                 Sign Up
+            </Button>
+
+            <br/>
+            <br/>
+            <div id="gSignIn"></div>
+
+            <br/>
+            <Button href="https://www.facebook.com/login/" className="fbButton">
+                <img src={Facebook} alt="" classname="icon"/>
+                Continue with Facebook
             </Button>
 
             { isLoading && <Loader /> }

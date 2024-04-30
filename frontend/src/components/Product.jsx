@@ -1,6 +1,7 @@
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import Rating from "./Rating";
+import PropTypes from 'prop-types';
 
 const Product = ({ product }) => {
   return (
@@ -22,5 +23,6 @@ const Product = ({ product }) => {
     </Card>
   )
 }
+
 
 export default Product

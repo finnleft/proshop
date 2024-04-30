@@ -1,4 +1,5 @@
-import { Container, Row, Col } from "react-bootstrap"
+import { Container, Row, Col } from "react-bootstrap";
+import PropTypes from 'prop-types';
 
 const FormContainer = ({ children }) => {
   return (
@@ -11,5 +12,6 @@ const FormContainer = ({ children }) => {
     </Container>
   )
 }
+
 
 export default FormContainer

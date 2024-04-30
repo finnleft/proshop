@@ -7,8 +7,9 @@ import Rating from "../components/Rating";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import Meta from "../components/Meta";
-import { useGetProductDetailsQuery, useCreateReviewMutation } from "../slices/productsApiSlice";
+import { useGetProductDetailsQuery, useCreateReviewMutation, useShareToSocialsQuery } from "../slices/productsApiSlice";
 import { addToCart } from "../slices/cartSlice";
+import { FaTwitterSquare, FaLinkedin, FaFacebookSquare } from "react-icons/fa";
 
 const ProductScreen = () => {
   const { id: productId } = useParams();
@@ -22,6 +23,10 @@ const ProductScreen = () => {
 
 
   const { data : product, isLoading, refetch, error } = useGetProductDetailsQuery(productId);
+
+  // shareLinks will be a JSON object that contains all three social sharing links
+  // (Twitter/X, Linkedin, Facebook) to plug into the buttons
+  const { data: shareLinks, isLoading: loadingLinks } = useShareToSocialsQuery(productId);
 
   const [createReview, {isLoading: loadingProductReview}] = useCreateReviewMutation();
 
@@ -80,6 +85,23 @@ const ProductScreen = () => {
                         <ListGroup.Item>
                             {product.description}
                         </ListGroup.Item>
+                        <ListGroup.Item>
+                             { loadingLinks ? <Loader /> : (
+                                /* three sharing buttons for socials. each gets an <a> tag referencing the provided link from the query */
+                             <Row>
+                                 <Col>
+                                     <a href={shareLinks.twitter} className="twitter-share-button" target="_blank" data-show-count="false"><FaTwitterSquare size="40"/></a>
+                                     <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
+                                 </Col>
+                                 <Col>
+                                     <a href={shareLinks.linkedin} target="_blank"><FaLinkedin size="40"/></a>
+                                 </Col>
+                                 <Col>
+                                     <a href={shareLinks.facebook} target="_blank"><FaFacebookSquare size="40"/></a>
+                                 </Col>
+                             </Row>
+                             ) }
+                         </ListGroup.Item>
                     </ListGroup>
                     
                 </Col>

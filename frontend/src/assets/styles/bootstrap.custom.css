@@ -575,14 +575,6 @@ legend + * {
   -webkit-appearance: textfield;
 }
 
-/* rtl:raw:
-[type="tel"],
-[type="url"],
-[type="email"],
-[type="number"] {
-  direction: ltr;
-}
-*/
 ::-webkit-search-decoration {
   -webkit-appearance: none;
 }
@@ -12117,4 +12109,13 @@ fieldset:disabled .btn {
   .d-print-none {
     display: none !important;
   }
+}
+
+.fbButton{
+  width: 225px;
+  height: 45px;
+  padding: 7px 10px;
+  border-radius: 2px;
+  color: #ffffff;
+  background-color: #1877F2;
 }
