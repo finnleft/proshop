@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
