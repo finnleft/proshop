@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { Form, Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
