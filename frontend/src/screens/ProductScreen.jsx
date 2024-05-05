@@ -9,6 +9,7 @@ import Message from "../components/Message";
 import Meta from "../components/Meta";
 import { useGetProductDetailsQuery, useCreateReviewMutation, useShareToSocialsQuery } from "../slices/productsApiSlice";
 import { addToCart } from "../slices/cartSlice";
+import { addToSave } from "../slices/saveSlice";
 import { FaTwitterSquare, FaLinkedin, FaFacebookSquare } from "react-icons/fa";
 
 const ProductScreen = () => {
@@ -35,6 +36,11 @@ const ProductScreen = () => {
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
     navigate("/cart");
+  }
+
+  const addToSaveHandler = () => {
+    dispatch(addToSave({ ...product, qty}));
+    navigate("/saved");
   }
 
   const submitHandler = async (e) => {
@@ -137,10 +143,16 @@ const ProductScreen = () => {
                                 </ListGroup.Item>
                             )}
                             <ListGroup.Item>
+                            <div style={{ width: '100%', display: 'flex', justifyContent: 'space-between' }}>
                                 <Button className="btn-block" type="button" disabled={product.countInStock === 0}
                                 onClick={addToCartHandler}>
                                     Add to Cart
                                 </Button>
+                                <Button className="btn-block" type="button" disabled={userInfo === null}
+                                onClick={addToSaveHandler}>
+                                    Save for Later
+                                </Button>
+                            </div>
                             </ListGroup.Item>
                         </ListGroup>
                     </Card>
