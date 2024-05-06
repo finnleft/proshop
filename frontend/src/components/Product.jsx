@@ -23,6 +23,14 @@ const Product = ({ product }) => {
     </Card>
   )
 }
-
+Product.propTypes = {
+    _id: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    numReviews: PropTypes.number.isRequired,
+    price: PropTypes.number.isRequired,
+    product: PropTypes.string.isRequired,
+  };
 
 export default Product
